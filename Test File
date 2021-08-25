@@ -1,0 +1,31 @@
+## The below functions perform the caching the Inverse of a Matrix when a 
+##2x2 invertible matrix is submitted
+
+## makeCacheMatrix accepts the matrix input and caches the inverse of the matrix "inv"
+
+makeCacheMatrix <- function(x = matrix()) {
+  set_mat <- function(y) {
+    x <<- y
+    x
+  }
+  
+  get_mat <- function() x
+  
+  
+  inv <- function() solve(x)
+  
+  list(set_mat = set_mat,get_mat=get_mat, inv = inv)
+}
+
+
+## cacheSolve retrives the original matrix as argument and returns the inverse if already cached else 
+##generate the inverse 
+
+cacheSolve <- function(x, ...) {
+        ## Return a matrix that is the inverse of 'x'
+        show_mat <- inv(x)
+        if(all(!is.na(show_mat))) {
+          message("getting cached data")
+          return(show_mat)
+        } else solve(x)
+}
